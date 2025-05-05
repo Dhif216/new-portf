@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouadh Dhif - UI/UX Designer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue-500 */
+            --secondary-color: #60a5fa; /* Blue-400 */
+            --dark-color: #1e293b; /* Slate-800 */
+            --light-color: #f8fafc; /* Slate-50 */
+            --accent-color: #f97316; /* Orange-500 */
+            --bg-dark: #0f172a; /* Slate-900 */
+            --card-dark: #1e293b; /* Slate-800 */
+            --text-light: #e2e8f0; /* Slate-200 */
+            --text-muted: #94a3b8; /* Slate-400 */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+        
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            background-color: var(--card-dark);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            margin: 0 16px;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #334155;
+            margin-bottom: 24px;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            animation: skillAnimation 1.5s ease-in-out forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        
+        @keyframes skillAnimation {
+            to {
+                transform: scaleX(1);
+            }
+        }
+        
+        .hero-shape {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
+            border-radius: 0 0 0 100%;
+            z-index: -1;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+            padding: 2rem 1.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            bottom: 0;
+        }
+        
+        .timeline-item {
+            padding-left: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--card-dark);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        #navbarMobile {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            background-color: var(--bg-dark);
+        }
+        
+        #navbarMobile.show {
+            transform: translateX(0);
+        }
+
+        .cursor-dot {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            z-index: 9998;
+            opacity: 0.5;
+            transition: transform 0.2s ease;
+        }
+        
+        /* Form styling */
+        input, textarea {
+            background-color: var(--card-dark);
+            border-color: #334155;
+            color: var(--text-light);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #64748b;
+        }
+        
+        /* Navbar styling */
+        nav {
+            background-color: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid #1e293b;
+        }
+        
+        /* Section backgrounds */
+        .section-light {
+            background-color: #1e293b;
+        }
+        
+        /* Stats cards */
+        .stat-card {
+            background-color: var(--card-dark);
+            border: 1px solid #334155;
+        }
+        
+        /* Testimonial cards */
+        .testimonial-card {
+            background-color: var(--card-dark);
+            border: 1px solid #334155;
+        }
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("6jrdz955DXgRN0qRA"); // Initialize with your EmailJS user ID
+    })();
+</script>
+<body>
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-gradient">MD.</a>
+                
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="btn-primary ml-4">Hire Me</a>
+                </div>
+                
+                <button id="menuToggle" class="md:hidden text-2xl text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Navigation -->
+    <div id="navbarMobile" class="fixed top-0 left-0 h-full w-3/4 shadow-lg z-50 md:hidden transition-transform">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <a href="#" class="text-2xl font-bold text-gradient">MD.</a>
+                <button id="closeMenu" class="text-2xl text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#contact" class="btn-primary mt-4 text-center">Hire Me</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative pt-20">
+        <div class="hero-shape"></div>
+        <div class="container mx-auto px-4 py-16">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 fade-in">
+                    <p class="text-lg font-medium mb-4 text-slate-400">Hello, I'm</p>
+                    <h1 class="text-5xl md:text-7xl font-bold font-heading mb-6">Mouadh <span class="text-gradient">Dhif</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">UI/UX Designer</h2>
+                    <p class="text-lg text-slate-400 mb-8 max-w-lg">Crafting exceptional user experiences through creative design solutions. Based in Finland, working worldwide.</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="btn-primary">View Portfolio</a>
+                        <a href="#contact" class="px-6 py-3 border-2 border-slate-600 rounded-full font-semibold transition hover:border-slate-500 text-white">Contact Me</a>
+                    </div>
+                    <div class="flex space-x-6 mt-12">
+                        <a href="https://www.linkedin.com/in/dhif-mouadh-07a75a104" class="text-slate-400 hover:text-blue-400 transition" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-pink-500 transition"><i class="fab fa-dribbble text-xl"></i></a>
+                        <a href="https://www.behance.net/mouadhvitonen" class="text-slate-400 hover:text-blue-500 transition" target="_blank"><i class="fab fa-behance text-xl"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-purple-500 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 fade-in">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-slate-800 shadow-xl mx-auto">
+                            <!-- Placeholder for profile image -->
+                            <div class="w-full h-full bg-gradient flex items-center justify-center text-white">
+                                <span class="text-6xl font-bold">MD</span>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-slate-800 rounded-lg shadow-lg p-4 border border-slate-700">
+                            <p class="font-bold text-white">3+ Years Experience</p>
+                            <p class="text-sm text-slate-400">UI/UX Design</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 section-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">About <span class="text-gradient">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-2/5 fade-in">
+                    <div class="relative">
+                        <div class="w-full h-96 bg-slate-700 rounded-2xl overflow-hidden">
+                           <img src="profile.jpg" alt="My Photo" class="w-full h-full object-cover" /> <!-- Placeholder for about image -->
+                            <div class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-800 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-blue-400">My Photo</span>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-slate-800 p-4 rounded-xl shadow-lg border border-slate-700">
+                            <p class="font-bold text-white">UI/UX Designer</p>
+                            <p class="text-slate-400 text-sm">Based in Finland</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5 mt-12 md:mt-0 md:pl-16 fade-in">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Hello! I'm Mouadh Dhif</h3>
+                    <p class="text-slate-400 mb-6">I'm a passionate UI/UX designer with a keen eye for creating engaging digital experiences. My design philosophy centers around the perfect balance between aesthetics and functionality, ensuring that every project not only looks stunning but also delivers exceptional user experience.</p>
+                    <p class="text-slate-400 mb-6">Based in Finland, I've had the privilege of working with clients from around the world on various projects, from mobile applications to comprehensive web platforms. My freelance experience has equipped me with versatile skills and the ability to adapt to different industries and requirements.</p>
+                    <p class="text-slate-400 mb-8">I believe that great design should tell a story and evoke emotions while solving real problems. Every pixel and interaction in my designs serves a purpose, contributing to a seamless user journey.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="font-semibold mb-2 text-white">Name:</p>
+                            <p class="text-slate-400">Mouadh Dhif</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2 text-white">Email:</p>
+                            <p class="text-slate-400">dhif_mouadh@hotmail.fr</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2 text-white">From:</p>
+                            <p class="text-slate-400">Finland</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold mb-2 text-white">Freelance:</p>
+                            <p class="text-gradient font-medium">Available</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="dhif_mouadh_uxui_cv.pdf" class="btn-primary inline-block" download>Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">My <span class="text-gradient">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto">I've honed my skills in various areas of UI/UX design, continuously learning and adapting to new technologies and methodologies.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="fade-in">
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">UI Design</h4>
+                            <span class="text-slate-400">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">UX Research</h4>
+                            <span class="text-slate-400">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Wireframing</h4>
+                            <span class="text-slate-400">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Prototyping</h4>
+                            <span class="text-slate-400">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Figma</h4>
+                            <span class="text-slate-400">98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Adobe XD</h4>
+                            <span class="text-slate-400">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Adobe Photoshop</h4>
+                            <span class="text-slate-400">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <h4 class="font-semibold text-white">Adobe Illustrator</h4>
+                            <span class="text-slate-400">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in stat-card p-8 rounded-xl">
+                    <div class="text-4xl font-bold text-gradient mb-2">3+</div>
+                    <p class="text-slate-400">Years Experience</p>
+                </div>
+                <div class="fade-in stat-card p-8 rounded-xl">
+                    <div class="text-4xl font-bold text-gradient mb-2">30+</div>
+                    <p class="text-slate-400">Projects Completed</p>
+                </div>
+                <div class="fade-in stat-card p-8 rounded-xl">
+                    <div class="text-4xl font-bold text-gradient mb-2">10+</div>
+                    <p class="text-slate-400">Happy Clients</p>
+                </div>
+                <div class="fade-in stat-card p-8 rounded-xl">
+                    <div class="text-4xl font-bold text-gradient mb-2">1+</div>
+                    <p class="text-slate-400">Award Winning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 section-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">My <span class="text-gradient">Projects</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto">A selection of my recent work. Each project represents a unique challenge and solution in the world of UI/UX design.</p>
+            </div>
+            
+            <div class="mb-10 flex justify-center space-x-4 fade-in">
+                <button class="px-6 py-2 rounded-full bg-gradient text-white font-medium">All</button>
+                <button class="px-6 py-2 rounded-full bg-slate-800 font-medium hover:bg-slate-700 transition text-white">Web Design</button>
+                <button class="px-6 py-2 rounded-full bg-slate-800 font-medium hover:bg-slate-700 transition text-white">Mobile App</button>
+                <button class="px-6 py-2 rounded-full bg-slate-800 font-medium hover:bg-slate-700 transition text-white">Dashboard</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+<div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">BLOCKFLIX</h3>
+        <p class="text-slate-300 mb-4">BlockFlix is a Minecraft-themed streaming app for movies and series. With a pixel-style interface and blocky animations, it turns watching content into a fun, immersive experience.</p>
+        <a href="project1.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+
+                <div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">PixelGPU</h3>
+        <p class="text-slate-300 mb-4">PixelGPU is an online store dedicated to high-performance graphics cards. From casual builds to pro-level rigs, we offer top brands, detailed specs, and fast shipping for every gamer and creator.</p>
+        <a href="project2.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+
+                
+    <div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">Hippilande</h3>
+        <p class="text-slate-300 mb-4">Hippilande is a cozy Finnish farm website where nature meets simplicity. Discover fresh products, local events, and farm life stories—all rooted in the heart of Finland’s countryside.</p>
+        <a href="project3.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+                
+                    <div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">GamePulse</h3>
+        <p class="text-slate-300 mb-4">GamePulse is your ultimate hub for gamers—an online store for the latest games, plus news, reviews, and blogs that keep your finger on the pulse of the gaming world..</p>
+        <a href="project4.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+                
+                <div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">Capcake</h3>
+        <p class="text-slate-300 mb-4">Capcake is my first ever design project—a playful, pastel-themed online shop dedicated to handcrafted cupcakes. From UI to UX, every element is baked with love, showcasing a fun and mouth-watering journey for dessert lovers..</p>
+        <a href="project5.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+                
+                <div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">🌍 RickyTour – Your Next Adventure Awaits</h3>
+        <p class="text-slate-300 mb-4">RickyTour is a modern travel agency platform designed for effortless trip planning and booking. With a focus on smooth UX and stunning visuals, it guides users from inspiration to destination—all in just a few clicks..</p>
+        <a href="project6.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+<div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project7.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">🖤 Monochrome Elegance –</h3>
+        <p class="text-slate-300 mb-4">Monochrome Elegance is a minimalist fashion concept focused on bold simplicity. Designed with clean lines, neutral tones, and refined UI, this project showcases modern clothing through a lens of pure, digital sophistication..</p>
+        <a href="project7.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+<div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project8.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">RICKYBike in Progress</h3>
+        <p class="text-slate-300 mb-4">RickyBike is a sleek e-bike store built for speed and simplicity. With a dynamic interface and smart product filtering, it makes finding your perfect electric ride fast, fun, and effortless..</p>
+        <a href="project8.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+         
+<div class="project-card fade-in">
+    <div class="h-64 bg-slate-700">
+        <!-- Embedded video instead of gradient background -->
+        <video class="w-600 h-600 object-cover" controls>
+            <source src="project9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-overlay">
+        <h3 class="text-xl font-bold text-white mb-2">☕ Café Dhif – Bistro in Progress</h3>
+        <p class="text-slate-300 mb-4">Café Dhif is a warm, rustic bistro concept designed to blend modern UI with cozy café vibes. Although still in development, it reflects a strong start in layout, mood, and brand direction..</p>
+        <a href="project9.mp4" target="_blank" class="text-white font-medium flex items-center">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</div>
+		
+            <div class="text-center mt-12 fade-in">
+                <a href="https://github.com/Dhif216" target="_blank" class="btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Work <span class="text-gradient">Experience</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto">My professional journey as a UI/UX designer, including freelance projects and collaborations.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="card p-6">
+                        <span class="text-sm font-medium text-slate-400 mb-2 block">2021 - Present</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Senior UI/UX Designer - Freelance</h3>
+                        <p class="text-slate-400 mb-4">Working with global clients to deliver exceptional user experiences across various digital products.</p>
+                        <ul class="text-slate-400 list-disc pl-5 space-y-2">
+                            <li>Led the UX research and design for over 8 successful projects</li>
+                            <li>Collaborated with development teams to ensure design integrity</li>
+                            <li>Implemented user-centered design methodologies</li>
+                            <li>Delivered projects for clients in fintech, e-commerce, and education sectors</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="card p-6">
+                        <span class="text-sm font-medium text-slate-400 mb-2 block">2018 - 2021</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">UI/UX Designer - Tech Solutions Inc.</h3>
+                        <p class="text-slate-400 mb-4">Worked as part of a cross-functional team to create innovative digital solutions.</p>
+                        <ul class="text-slate-400 list-disc pl-5 space-y-2">
+                            <li>Designed responsive web interfaces and mobile applications</li>
+                            <li>Conducted user testing and implemented feedback</li>
+                            <li>Created design systems to maintain consistency</li>
+                            <li>Collaborated with product managers to align design with business goals</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="timeline-item fade-in">
+                    <div class="card p-6">
+                        <span class="text-sm font-medium text-slate-400 mb-2 block">2016 - 2018</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Junior UI Designer - Creative Agency</h3>
+                        <p class="text-slate-400 mb-4">Started my professional journey in the digital design field.</p>
+                        <ul class="text-slate-400 list-disc pl-5 space-y-2">
+                            <li>Assisted senior designers in creating visual assets</li>
+                            <li>Learned and applied UI/UX design principles</li>
+                            <li>Contributed to multiple web design projects</li>
+                            <li>Developed skills in various design tools and software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 section-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Client <span class="text-gradient">Testimonials</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto">What my clients say about working with me and the results we've achieved together.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-xl fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-slate-700 mr-4">
+                            <!-- Placeholder for client image -->
+                            <div class="w-full h-full bg-slate-600 rounded-full flex items-center justify-center">
+                                <span class="text-slate-300 font-bold">JD</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">John Doe</h4>
+                            <p class="text-slate-400 text-sm">CEO, Tech Company</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">"Working with Mouadh was a game-changer for our product. His attention to detail and user-centered approach elevated our platform's usability and aesthetic appeal."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-xl fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-slate-700 mr-4">
+                            <!-- Placeholder for client image -->
+                            <div class="w-full h-full bg-slate-600 rounded-full flex items-center justify-center">
+                                <span class="text-slate-300 font-bold">JS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Jane Smith</h4>
+                            <p class="text-slate-400 text-sm">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">"Mouadh's design work has consistently exceeded our expectations. His ability to translate our ideas into intuitive, beautiful interfaces is truly remarkable."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-xl fade-in">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-slate-700 mr-4">
+                            <!-- Placeholder for client image -->
+                            <div class="w-full h-full bg-slate-600 rounded-full flex items-center justify-center">
+                                <span class="text-slate-300 font-bold">MJ</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Mark Johnson</h4>
+                            <p class="text-slate-400 text-sm">Startup Founder</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">"As a startup, finding the right designer was crucial. Mouadh not only delivered outstanding designs but also provided valuable insights that helped shape our product strategy."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold font-heading mb-4">Get In <span class="text-gradient">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient mx-auto"></div>
+                <p class="mt-6 text-slate-400 max-w-2xl mx-auto">Have a project in mind or want to discuss potential collaboration? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="contact-icon mx-auto">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 text-white">Phone</h4>
+                            <p class="text-slate-400">+358 44970 314 9</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="contact-icon mx-auto">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 text-white">Email</h4>
+                            <p class="text-slate-400">dhif_mouadh@hotmail.fr</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="contact-icon mx-auto">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 text-white">Location</h4>
+                            <p class="text-slate-400">Helsinki, Finland</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="contact-icon mx-auto">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4 class="font-bold mb-2 text-white">Website</h4>
+                            <p class="text-slate-400">www.mouadhdhif.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 text-center md:text-left">
+                        <h4 class="font-bold mb-4 text-white">Follow Me</h4>
+                        <div class="flex justify-center md:justify-start space-x-6">
+                            <a href="https://www.linkedin.com/in/dhif-mouadh-07a75a104" class="w-10 h-10 rounded-full bg-gradient flex items-center justify-center text-white transition transform hover:scale-110" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gradient flex items-center justify-center text-white transition transform hover:scale-110">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="https://www.behance.net/mouadhvitonen" class="w-10 h-10 rounded-full bg-gradient flex items-center justify-center text-white transition transform hover:scale-110" target="_blank">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gradient flex items-center justify-center text-white transition transform hover:scale-110">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-10 fade-in">
+                    <form id="contactForm" class="card p-8 rounded-xl">
+                        <div class="mb-6">
+                            <label for="name" class="block text-white font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-white font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-white font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Subject" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-white font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary">Send Message</button>
+                        <div id="formMessage" class="mt-4 text-center hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white">MD<span class="text-blue-400">.</span></a>
+                </div>
+                
+                <div class="mb-4 md:mb-0">
+                    <ul class="flex space-x-6">
+                        <li><a href="#home" class="hover:text-blue-400 transition text-slate-400">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-400 transition text-slate-400">About</a></li>
+                        <li><a href="#projects" class="hover:text-blue-400 transition text-slate-400">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-blue-400 transition text-slate-400">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-slate-400">
+                    <p>© 2023 Mouadh Dhif. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Show/hide mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navbarMobile').classList.add('show');
+        });
+        
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('navbarMobile').classList.remove('show');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.getElementById('navbarMobile').classList.remove('show');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Reveal animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('appear');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Custom cursor
+        const cursorDot = document.querySelector(".cursor-dot");
+        const cursorOutline = document.querySelector(".cursor-outline");
+        
+        if (window.innerWidth > 768) {
+            window.addEventListener('mousemove', function(e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                
+                cursorOutline.style.left = `${posX - 15}px`;
+                cursorOutline.style.top = `${posY - 15}px`;
+            });
+        }
+        
+        // Add hover effect to links and buttons
+        const hoverElements = document.querySelectorAll('a, button');
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                if (cursorOutline) {
+                    cursorOutline.style.transform = 'scale(1.5)';
+                    cursorOutline.style.opacity = '0.3';
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                if (cursorOutline) {
+                    cursorOutline.style.transform = 'scale(1)';
+                    cursorOutline.style.opacity = '0.5';
+                }
+            });
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Disable button to prevent multiple submissions
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    emailjs.sendForm('service_8yqymrb', 'template_22xds5o', form)
+        .then(() => {
+            formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
+            formMessage.classList.remove('hidden', 'text-red-400');
+            formMessage.classList.add('text-green-400');
+            form.reset();
+        })
+        .catch((error) => {
+            formMessage.textContent = 'Error sending message. Please try again later.';
+            formMessage.classList.remove('hidden', 'text-green-400');
+            formMessage.classList.add('text-red-400');
+            console.error('Error sending email:', error);
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        });
+});
+    </script>
+</body>
+</html>
